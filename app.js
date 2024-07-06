@@ -6,21 +6,21 @@ const bodyParser = require("body-parser");
 
 const fileUpload = require("express-fileupload");
 const dotenv = require("dotenv");
+const cors = require('cors');
 
 const app = express();
 
 
 
 dotenv.config({path:"config/config.env"});
-// const cors = require('cors');
 
-// const corsOptions ={
-// origin:'http://localhost:3000',
-// 'Content-Type': 'Authorization',
-// credentials:true,
-// optionSuccessStatus:200
-// }
-// app.use(cors(corsOptions));
+const corsOptions ={
+origin:['http://localhost:3000',process.env.FRONTEND_URL],
+'Content-Type': 'Authorization',
+credentials:true,
+optionSuccessStatus:200
+}
+app.use(cors(corsOptions));
 app.use(express.json({limit:'50mb', extended: true}));
 app.use(express.urlencoded({limit:'50mb',extended:true}));
 // app.use(express.json());
