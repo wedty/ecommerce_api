@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: your-backend-service
+    env: node
+    plan: starter
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      NODE_ENV: production
+    automaticDeploys:
+      - branch: main
+    healthCheckPath: /
